@@ -18,6 +18,8 @@ PS：更换 ip 的时候会有短暂的服务中断。
 gcloud -v
 ```
 
+![1.1-GCloud](https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/screenshots/1.1-gcloud.png?raw=true)
+
 ##### 1.2 登录谷歌云账户
 
 确保已经通过 gcloud 登录谷歌云账户（当然也需要先有一个谷歌云账户）。
@@ -55,6 +57,9 @@ wget https://raw.githubusercontent.com/Cocean001/change_gcloud_vm_ip/main/change
 ```
 
 ##### 2.2 打开脚本，修改几个设置
+
+![2.2-GCloud](https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/screenshots/2.2-configure.png?raw=true)
+说明：
 
 - VM_NAME：要修改 ip 的虚拟机名。
 - STATIC_IP_NAME：新 IP 的临时名字，可以是任意值。
