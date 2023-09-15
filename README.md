@@ -10,7 +10,7 @@ PS: There will be a short service interruption when changing the ip.
 
 ### 1.0 Requirements
 
-##### 1.1 Google Cloud SDK is installed.
+#### 1.1 Google Cloud SDK is installed.
 
 The gcloud command line tool needs to be installed.
 
@@ -22,11 +22,11 @@ gcloud -v
 
 ![1.1-GCloud](https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/screenshots/1.1-gcloud.png?raw=true)https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/screenshots/1.1-gcloud.png?raw=true
 
-##### 1.2 Signing in to a Google Cloud Account
+#### 1.2 Signing in to a Google Cloud Account
 
 Make sure you are already logged into your Google Cloud account via gcloud (and of course you need to have a Google Cloud account first).
 
-##### 1.3 Create a VM and network rules
+#### 1.3 Create a VM and network rules
 
 A VM virtual machine can be created manually. It can also be created on the command line using gcloud.
 Here is a sample configuration for creating it from the command line:
@@ -46,7 +46,7 @@ gcloud compute firewall-rules create my-vm-name-allow-all --direction=INGRESS --
 
 ### 2.0 Usage
 
-##### 2.1 Downloading the script locally
+#### 2.1 Downloading the script locally
 
 ```shell
 curl -O https://raw.githubusercontent.com/Cocean001/change_gcloud_vm_ip/main/change_ip.sh && chmod +x change_ip.sh
@@ -58,7 +58,7 @@ Or:
 wget https://raw.githubusercontent.com/Cocean001/change_gcloud_vm_ip/main/change_ip.sh && chmod +x change_ip.sh
 ```
 
-##### 2.2 Open the script and change a few settings
+#### 2.2 Open the script and change a few settings
 
 ![2.2-GCloud](https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/screenshots/2.2-configure.png?raw=true)
 Description:
@@ -67,7 +67,7 @@ Description:
 - STATIC_IP_NAME: temporary name of the new IP, can be any value.
 - REGION: which region you want to assign the VM to. You can refer to [list of optional regions](https://cloud.google.com/compute/docs/regions-zones?hl=zh-cn)
 
-##### 2.3 Run the script
+#### 2.3 Run the script
 
 ```shell
 bash change_ip.sh
