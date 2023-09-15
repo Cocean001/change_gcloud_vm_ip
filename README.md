@@ -1,80 +1,82 @@
-# 谷歌云虚拟机 IP 地址更换脚本
+# Google Cloud VM IP Address Change Scripts
 
-### 0.0 说明
+EN | [ZH](https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/README_ZH.md)
 
-本脚本支持在不影响原有虚拟机数据的前提下，更换谷歌云上的虚拟机（VM）的外网 IP 地址。
+### 0.0 Description
 
-PS：更换 ip 的时候会有短暂的服务中断。
+This script supports changing the external IP address of a virtual machine (VM) on Google Cloud without affecting the data of the original VM.
 
-### 1.0 前提条件
+PS: There will be a short service interruption when changing the ip.
 
-##### 1.1 安装好谷歌云 SDK
+### 1.0 Requirements
 
-需要安装好 gcloud 命令行工具。
+##### 1.1 Google Cloud SDK is installed.
 
-测试：
+The gcloud command line tool needs to be installed.
+
+Test:
 
 ```shell
 gcloud -v
 ```
 
-![1.1-GCloud](https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/screenshots/1.1-gcloud.png?raw=true)
+![1.1-GCloud](https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/screenshots/1.1-gcloud.png?raw=true)https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/screenshots/1.1-gcloud.png?raw=true
 
-##### 1.2 登录谷歌云账户
+##### 1.2 Signing in to a Google Cloud Account
 
-确保已经通过 gcloud 登录谷歌云账户（当然也需要先有一个谷歌云账户）。
+Make sure you are already logged into your Google Cloud account via gcloud (and of course you need to have a Google Cloud account first).
 
-##### 1.3 创建一个虚拟机和网络规则
+##### 1.3 Create a VM and network rules
 
-可以手动创建一个 VM 虚拟机。也可以用 gcloud 在命令行里创建。
-这里通过命令行创建示例配置为：
+A VM virtual machine can be created manually. It can also be created on the command line using gcloud.
+Here is a sample configuration for creating it from the command line:
 
-- 虚拟机名：my-vm-name
-- 虚拟机系统：debian-10
-- 虚拟机类型：n1-standard-1
-- 防火墙规则：允许所有入站流量
+- VM name: my-vm-name
+- VM system: debian-10
+- VM type: n1-standard-1
+- Firewall rules: Allow all inbound traffic
 
 ```shell
-# 创建虚拟机
+# Create the virtual machine
 gcloud compute instances create my-vm-name --image-family debian-10 --image-project debian-cloud --machine-type n1-standard-1
 
-# 设置防火墙规则
-gcloud compute firewall-rules create my-vm-name-allow-all --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=all --source-ranges=0.0.0.0/0 --target-tags=my-vm-name
+# Set up firewall rules
+gcloud compute firewall-rules create my-vm-name-allow-all --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=all - - -source-ranges=0 - -source-ranges=0 - -source-ranges=0 - -source-ranges=0 - -source-ranges=0 -source-ranges=0.0.0.0/0 --target-tags=my-vm-name
 ```
 
-### 2.0 使用方法
+### 2.0 Usage
 
-##### 2.1 下载脚本到本地
+##### 2.1 Downloading the script locally
 
 ```shell
 curl -O https://raw.githubusercontent.com/Cocean001/change_gcloud_vm_ip/main/change_ip.sh && chmod +x change_ip.sh
 ```
 
-或：
+Or:
 
 ```shell
 wget https://raw.githubusercontent.com/Cocean001/change_gcloud_vm_ip/main/change_ip.sh && chmod +x change_ip.sh
 ```
 
-##### 2.2 打开脚本，修改几个设置
+##### 2.2 Open the script and change a few settings
 
 ![2.2-GCloud](https://github.com/Cocean001/change_gcloud_vm_ip/blob/main/screenshots/2.2-configure.png?raw=true)
-说明：
+Description:
 
-- VM_NAME：要修改 ip 的虚拟机名。
-- STATIC_IP_NAME：新 IP 的临时名字，可以是任意值。
-- REGION：想要把虚拟机分配到哪个区域。可以参照[可选区域列表](https://cloud.google.com/compute/docs/regions-zones?hl=zh-cn)
+- VM_NAME: the virtual machine name of the ip to be modified.
+- STATIC_IP_NAME: temporary name of the new IP, can be any value.
+- REGION: which region you want to assign the VM to. You can refer to [list of optional regions](https://cloud.google.com/compute/docs/regions-zones?hl=zh-cn)
 
-##### 2.3 运行脚本
+##### 2.3 Run the script
 
 ```shell
 bash change_ip.sh
 ```
 
-### License
+### Licence
 
 MIT
 
-### 其他
+### Others
 
-- 本脚本只是为了学习和交流。在正式环境用，请自负风险。
+- This script is for learning and communication purposes only. Use it in a formal environment at your own risk.
